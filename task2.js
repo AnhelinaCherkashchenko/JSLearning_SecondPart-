@@ -16,6 +16,7 @@ const buttonElement = document.querySelector("button");
 const nameInput = document.querySelector('[data-js-inputName]');
 const surnameInput = document.querySelector('[data-js-inputSurname]');
 const passportIDInput = document.querySelector('[data-js-inputPassportID]');
+const arrValues = [nameInput, surnameInput, passportIDInput];
 
 buttonElement.addEventListener("click", () => {
     const formValues = {
@@ -24,15 +25,10 @@ buttonElement.addEventListener("click", () => {
         passportID: passportIDInput.value
     };
     console.log(formValues);
-    nameInput.value = "";
-    surnameInput.value = "";
-    passportIDInput.value = "";
-    [nameInput, surnameInput, passportIDInput].forEach(input => {
-        input.style.border = "";
-    });
+    cleaningForm(arrValues);
 });
 
-[nameInput, surnameInput, passportIDInput].forEach(input => {
+arrValues.forEach(input => {
     input.addEventListener("input", () => {
         if (input.value.length > 15) {
             input.style.border = "2px solid red";
@@ -41,3 +37,10 @@ buttonElement.addEventListener("click", () => {
         }
     });
 });
+
+function cleaningForm(arrValues) {
+    arrValues.forEach(input => {
+        input.value = null;
+        input.style.border = "";
+    });
+}

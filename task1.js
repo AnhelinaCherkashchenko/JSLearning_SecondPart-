@@ -2,6 +2,6 @@
 const items = document.querySelectorAll("li");
 после чего перебери каждый li и присвой им красный цвет */
 const items = document.querySelectorAll("li");
-items.forEach(function(listElement) {
-    listElement.style.color = "red";
+items.forEach((listElement) => {
+  listElement.style.color = "red";
 });
